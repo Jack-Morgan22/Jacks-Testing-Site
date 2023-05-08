@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<h1> Vertical Navigation Bar </h1>
+  To build a vertical navigation bar, you can style the &lt;a> elements inside the list, in addition to the code from the previous page: <br>
+  <br>
+  li a { <br>
+  display: block; <br>
+  width: 60px; <br>
+  background-color: #dddddd; <br>
+  } <br> <br>
+
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li a {
+      display: block;
+      width: 60px;
+      background-color: #dddddd;
+    }
+  </style>
+
+<ul>
+  <li><a href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+
+<p>A background color is added to the links to show the link area.</p>
+<p>Notice that the whole link area is clickable, not just the text.</p>
+
+  <b> Example explained: </b> <br>
+  display: block; - Displaying the links as block elements makes the whole link area clickable (not just the text), and it allows us to specify the width (and padding, margin, height, etc. if you want)
+  <br> width: 60px; - Block elements take up the full width available by default. We want to specify a 60 pixels width <br>
+  <br>
+  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  <br> <h2> You can also set the width of &lt;ul>, and remove the width of &lt;a>,
+  as they will take up the full width available when displayed as block elements.
+  <br> This will produce the same result as our previous example: </h2> <br>
+  ul { <br>
+  list-style-type: none; <br>
+  margin: 0; <br>
+  padding: 0; <br>
+  width: 60px; <br>
+  } <br>
+
+  li a { <br>
+  display: block; <br>
+  } <br>
+</head>
+<body>
+
+</body>
+</html>

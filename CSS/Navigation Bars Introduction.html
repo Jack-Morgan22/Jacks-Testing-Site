@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <h1> Navigation Bars </h1>
+  Having easy-to-use navigation is important for any website. <br>
+  With CSS you can transform boring HTML menus into good-looking navigation bars. <br>
+  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  <h2> Navigation Bar = List of Links </h2>
+  A navigation bar needs standard HTML as a base. <br>
+  In our examples we will build the navigation bar from a standard HTML list. <br>
+  A navigation bar is basically a list of links, so using the &lt;ul&gt; and &lt;li&gt; elements makes perfect sense: <br><br>
+
+  &lt;ul&gt; <br>
+  &lt;li&gt;&lt;a href="default.asp">Home&lt;/a&gt;&lt;/li&gt; <br>
+  &lt;li&gt;&lt;a href="news.asp">News&lt;/a&gt;&lt;/li&gt; <br>
+  &lt;li&gt;&lt;a href="contact.asp">Contact&lt;/a&gt;&lt;/li&gt; <br>
+  &lt;li&gt;&lt;a href="about.asp">About&lt;/a&gt;&lt;/li&gt; <br>
+  &lt;/ul> <br><br>
+
+  <b> Example: </b>
+  <ul>
+    <li><a href="default.asp">Home</a></li>
+    <li><a href="news.asp">News</a></li>
+    <li><a href="contact.asp">Contact</a></li>
+    <li><a href="about.asp">About</a></li>
+  </ul>
+<br>
+  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  <h2> Now let's remove the bullets and the margins and padding from the list: </h2>
+
+  &lt;style&gt; <br>
+    ul { <br>
+      list-style-type: none; <br>
+      margin: 0; <br>
+      padding: 0; <br>
+    } <br>
+  &lt;/style&gt; <br>
+  </style>
+
+  <br> <b> Example explained: </b> <br>
+      list-style-type: none; - Removes the bullets. A navigation bar does not need list markers <br>
+      Set margin: 0; and padding: 0; to remove browser default settings <br>
+      The code in the example above is the standard code used in both vertical, and horizontal navigation bars <br>
+</head>
+<body>
+
+</body>
+</html>
