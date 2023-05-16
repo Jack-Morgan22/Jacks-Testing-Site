@@ -115,6 +115,51 @@
         width: 100%;
       }
     }
+    .dropdown {
+      float: left;
+      overflow: hidden;
+    }
+
+    .dropdown .dropbtn {
+      font-size: 16px;
+      border: none;
+      outline: none;
+      color: white;
+      padding: 14px 16px;
+      background-color: inherit;
+      font-family: inherit;
+      margin: 0;
+    }
+
+    .navbar a:hover, .dropdown:hover .dropbtn {
+      background-color: red;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      float: none;
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -123,12 +168,52 @@
   <img src="https://i.imgur.com/declWeA.png" alt="Logo" class="logo"> <!-- Website Header Image -->
 </div>
 
+<!-- Navigation Bar -->
+<!-- Start of HTML Drop Down Navigation Bar -->
 <div class="navbar">
-  <a href="https://mi-linux.wlv.ac.uk/~2201053/Jacks-Testing-Site/HTML/Introduction.html">HTML Introduction</a>
-  <a href="https://mi-linux.wlv.ac.uk/~2201053/Jacks-Testing-Site/CSS/Introduction-NAV-W3-Schools/Introduction.html">CSS Introduction</a>
+  <div class="dropdown">
+    <button class="dropbtn">HTML
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="https://mi-linux.wlv.ac.uk/~2201053/Jacks-Testing-Site/HTML/Introduction.html">HTML Introduction</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </div>
+  <!-- End of HTML Drop Down Navigation Bar -->
+  <!-- Start of CSS Drop Down Navigation Bar -->
+<div class="navbar">
+  <div class="dropdown">
+    <button class="dropbtn">CSS
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="https://mi-linux.wlv.ac.uk/~2201053/Jacks-Testing-Site/CSS/Introduction-NAV-W3-Schools/Introduction.html">CSS Introduction</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </div>
+  <!-- End of CSS Drop Down Navigation Bar -->
+  <!-- Start of Socials Drop Down Navigation Bar -->
+  <div class="navbar">
+    <div class="dropdown">
+      <button class="dropbtn">Socials
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="https://github.com/Jack-Morgan22/Jacks-Testing-Site">GitHub Repository</a>
+        <a href="https://jackmorgan2002.imgur.com/all">Imgur</a>
+        <a href="https://www.youtube.com/@jackmorgan2002">YouTube</a>
+      </div>
+    </div>
+    <!-- End of Socials Drop Down Navigation Bar -->
+  <!-- Standard Navigation Bar Links: -->
   <a href="#">Link</a>
+  <!-- Right side Navigation Bar button -->
   <a href="#" class="right">Link</a>
 </div>
+<!-- End of Navigation Bar -->
 
 <div class="row">
   <div class="side">
