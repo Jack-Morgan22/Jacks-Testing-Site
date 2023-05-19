@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Landscape or Portrait</title>
+<style>
+@media  (orientation: landscape) {
+  body::after {
+    content: "Landscape Landscape Landscape Landscape Landscape Landscape Landscape Landscape Landscape Landscape Landscape Landscape Landscape ";
+  }
+}
+
+@media (orientation: portrait) {
+  body::after {
+    content: "Portrait Portrait Portrait Portrait Portrait Portrait Portrait Portrait ";
+    display: flex;
+    flex-direction: column;
+    writing-mode: vertical-rl;
+  }
+}
+
+body {
+  text-align: center;
+  font-size: 40px;
+}
+</style>	
+</head>
+<body>
+</body>
+</html>

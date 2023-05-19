@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Grid CSS</title>    
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header,
+footer {
+  text-align: center;
+}
+
+header {
+  padding: var(--metric-box-spacing);
+  background-color: hsl(140deg 70% 95%);
+  font-size: 1.4em;
+}
+
+main {
+  min-height: calc(100vh - 7em);
+}
+
+article {
+  background-color: hsl(60deg 70% 95%);
+}
+
+aside {
+  background-color: hsl(0deg 70% 95%);
+}
+
+article,
+aside {
+  padding: var(--metric-box-spacing);
+  margin: var(--metric-box-spacing);
+}
+
+footer {
+  padding: calc(var(--metric-box-spacing) / 2);
+  background-color: hsl(200deg 70% 95%);
+}
+
+p {
+  margin-block-start: var(--metric-box-spacing);
+}
+
+@media (min-width: 45em) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+  }
+}
+</style>
+</head>
+	<body>
+  <header>
+    Grid CSS
+  </header>
+  <main>
+    <article>
+      <h1>Grid CSS</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at lacus nisi. Quisque aliquet mollis consequat. Ut malesuada quis elit tempus semper. Suspendisse maximus urna in felis imperdiet, at blandit sapien tristique. Ut in elit a velit condimentum aliquet. Maecenas varius pretium odio et tempor. Praesent leo mauris, fermentum ac laoreet vitae, ornare a nisi.
+
+Duis consequat magna eros, consequat fringilla metus suscipit ut. Curabitur accumsan massa quis tellus interdum volutpat. Vivamus imperdiet ipsum justo, eu dignissim mi congue non. Proin auctor hendrerit urna, ut lobortis justo ultricies vel. Donec at ante sapien. Pellentesque vehicula malesuada interdum. Nulla leo metus, luctus aliquam est tincidunt, malesuada convallis risus. Phasellus nec molestie ante. Vestibulum vehicula, eros ac euismod vestibulum, nibh ligula efficitur ligula, sed fermentum ex dui ullamcorper arcu. Vestibulum sodales lectus quis eros auctor tincidunt.
+
+</p>
+    </article>
+    <aside>
+      <h2>History</h2>
+      <p>Proin venenatis nibh sit amet diam molestie auctor. Proin ac sem et libero ultrices aliquet. Fusce sollicitudin porta neque eget dignissim. Mauris convallis lacinia venenatis. Donec vulputate tempus lectus, nec commodo mi efficitur a. Sed rutrum malesuada nibh. Vivamus semper blandit pharetra. In vitae molestie ligula. Etiam facilisis hendrerit quam. Nullam porta ac sapien eget vehicula. Suspendisse sed nulla vulputate, facilisis neque ultrices, faucibus dui. Nullam magna tortor, commodo vel ante vitae, dapibus tincidunt dui. Proin vitae magna leo. Sed vitae hendrerit lorem, ut eleifend nisl.</p>
+    </aside>
+  </main>
+  <footer>
+    <small>I made this!</small>
+  </footer>
+</body>

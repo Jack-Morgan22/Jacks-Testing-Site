@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Picture set</title>
+<style>
+img {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+</style>	
+</head>
+<body>
+<picture>
+  <source srcset="large.jpg" media="(min-width: 75em)">
+  <source srcset="medium.jpg" media="(min-width: 40em)">
+  <img src="small.jpg" alt="A description of the image.">
+</picture>
+</body>
+</html>

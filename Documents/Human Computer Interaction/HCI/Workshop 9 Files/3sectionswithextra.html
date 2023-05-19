@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .section {
+        width: 200px;
+        height: 200px;
+        background-color: lightgray;
+        border: 2px solid gray;
+        text-align: center;
+        font-size: 20px;
+      }
+	  #section1{
+        background-color: red;
+	  }
+	  #section2{
+        background-color: green;
+	  }
+	  #section3{
+        background-color: yellow;
+	  }
+      button {
+        padding: 10px 20px;
+        margin: 20px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body onload="showSection(section2)">
+    <div>
+      <button id="btn1">Show Section 1</button>
+      <button id="btn2">Show Section 2</button>
+      <button id="btn3">Show Section 3</button>
+      <button id="btn4">Show Extra</button>
+      <button id="btn5">Hide Extra</button>
+      <button id="btnAll">Show All Sections</button>
+    </div>
+    <div class="container">
+      <div id="section1" class="section">Section 1</div>
+      <div id="section2" class="section">Section 2</div>
+      <div id="section3" class="section">
+	  Section 3
+	  <span id="extrabit"> Extra </span>
+	  </div>
+    </div>
+    <script>
+      const btn1 = document.getElementById("btn1");
+      const btn2 = document.getElementById("btn2");
+      const btn3 = document.getElementById("btn3");
+      const btnAll = document.getElementById("btnAll");
+      const btn4 = document.getElementById("btn4");
+      const btn5 = document.getElementById("btn5");
+      const section1 = document.getElementById("section1");
+      const section2 = document.getElementById("section2");
+      const section3 = document.getElementById("section3");
+      const extrabit = document.getElementById("extrabit");
+
+      function showSection(section) {
+        section1.style.display = "none";
+        section2.style.display = "none";
+        section3.style.display = "none";
+        section.style.display = "block";
+      }
+
+      btn1.addEventListener("click", () => {
+        showSection(section1);
+      });
+      btn2.addEventListener("click", () => {
+        showSection(section2);
+      });
+      btn3.addEventListener("click", () => {
+        showSection(section3);
+      });
+      btnAll.addEventListener("click", () => {
+        section1.style.display = "block";
+        section2.style.display = "block";
+        section3.style.display = "block";
+      });
+      btn4.addEventListener("click", () => {
+        extrabit.style.display = "block";
+      });
+      btn5.addEventListener("click", () => {
+        extrabit.style.display = "none";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flexbox Component</title>
+<style>
+p {
+  margin-block-start: var(--metric-box-spacing);
+}
+.media {
+  background-color: var(--color-off-white);
+  margin: var(--metric-box-spacing);
+  padding: var(--metric-box-spacing);
+  display: flex;
+  align-items: center;
+  gap: var(--metric-box-spacing);
+}
+.media-illustration {
+  flex: 1;
+  max-inline-size: 200px;
+}
+.media-content {
+  flex: 3;
+}
+
+</style>	
+</head>
+<body>
+<div class="media">
+  <div class="media-illustration">
+    <svg viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="100" fill="#5f6368" /></svg>
+  </div>
+  <div class="media-content">
+    <h3>Media Object</h3>
+    <p>This is a media object. There’s an image and also some content.</p>
+    <p>In this case, the content is a heading followed by paragraphs of text.</p>
+	The image takes up one quarter of the available space and the text takes up the other three quarters. But the image never gets larger than 200 pixels.
+  </div>
+</div>
+<div class="media">
+  <div class="media-illustration">
+    <svg viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="100" fill="#5f6368" /></svg>
+  </div>
+  <div class="media-content">
+    <h3>Media Object</h3>
+    <p>This is a media object. There’s an image and also some content.</p>
+    <p>In this case, the content is a heading followed by paragraphs of text.</p>
+	The image takes up one quarter of the available space and the text takes up the other three quarters. But the image never gets larger than 200 pixels.
+  </div>
+</div>
+</body>
+</html>

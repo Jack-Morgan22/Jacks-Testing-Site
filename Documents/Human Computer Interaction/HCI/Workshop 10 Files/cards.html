@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Website</title>
+	<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin-block-start: var(--metric-box-spacing);
+}
+
+h1 {
+  margin-block-end: var(--metric-box-spacing);
+}
+
+header,
+footer {
+  background-color: var(--color-off-white);
+  text-align: center;
+}
+
+header {
+  padding: var(--metric-box-spacing);
+  background-color: hsl(140deg 70% 95%);
+  font-size: 1.4em;
+}
+
+main {
+  padding: var(--metric-box-spacing);
+  min-block-size: calc(100vh - 8em);
+}
+
+footer {
+  padding: calc(var(--metric-box-spacing) / 2);
+  background-color: hsl(200deg 70% 95%);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  grid-gap: var(--metric-box-spacing);
+}
+
+.card {
+  padding: var(--metric-box-spacing);
+  background-color: var(--color-off-white);
+  border-radius: var(--metric-radius);
+  box-shadow: var(--generic-shadow);
+}
+	
+	</style>
+	</head>
+<body>
+  <header>
+    <title>Cards</title>
+  </header>
+  <main>
+    <h1>Cards</h1>
+    <div class="cards">
+      <article class="card">
+        <h2>A card</h2>
+        <p>This is a card. There are many like it but this one is mine.</p>
+        <p>A card might have all sorts of content inside it. This one happens to have two paragraphs of text.</p>
+      </article>
+      <article class="card">
+        <h2>A card</h2>
+        <p>This is a card. There are many like it but this one is mine.</p>
+        <p>A card might have all sorts of content inside it. This one happens to have two paragraphs of text.</p>
+        <p>Actually, that’s not true. This particular card has three paragraphs.</p>
+      </article>
+      <article class="card">
+        <h2>A card</h2>
+        <p>This is a card. There are many like it but this one is mine.</p>
+        <p>A card might have all sorts of content inside it. This one happens to have two paragraphs of text.</p>
+      </article>
+      <article class="card">
+        <h2>A card</h2>
+        <p>This is a card. There are many like it but this one is mine.</p>
+        <p>A card might have all sorts of content inside it. This one happens to have two paragraphs of text.</p>
+      </article>
+      <article class="card">
+        <h2>A card</h2>
+        <p>This is a card. There are many like it but this one is mine.</p>
+        <p>A card might have all sorts of content inside it. This one happens to have two, no three, paragraphs of text.</p>
+        <p>Notice how all the cards in a row automatically have the same height?</p>
+      </article>
+      <article class="card">
+        <h2>A card</h2>
+        <p>This is a card. There are many like it but this one is mine.</p>
+        <p>A card might have all sorts of content inside it. This one happens to have two paragraphs of text.</p>
+      </article>
+    </div>
+  </main>
+  <footer>
+    <small>I made this!</small>
+  </footer>
+</body>

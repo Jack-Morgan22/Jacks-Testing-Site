@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Heading with lines</title>
+<style>
+h1 {
+  font-family: Georgia, serif;
+  text-align: center;
+  font-weight: normal;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1em;
+}
+
+h1::before,
+h1::after {
+  content: "";
+  border-top: 0.1em double black;
+  align-self: center;
+}
+</style>
+</head>
+<body>
+<h1>Heading</h1>
+</body>
+</html>
