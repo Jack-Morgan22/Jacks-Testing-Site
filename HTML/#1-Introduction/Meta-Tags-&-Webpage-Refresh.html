@@ -1,0 +1,51 @@
+<!--
+Meta Tags
+HTML lets you specify metadata - additional important information about a document in a variety of ways. The META elements can be used to include name/value pairs describing properties of the HTML document, such as author, expiry date, a list of keywords, document author etc.
+The <meta> tag is used to provide such additional information. This tag is an empty element and does not have a closing tag but carries information within its attributes.
+
+You can include one or more meta tags in your document based on what information you want to keep in your document but in general, meta tags do not impact the physical appearance of the document so from the appearance point of view, it does not matter if you include them or not.
+You can add metadata to your web pages by placing <meta> tags inside the header of the document which is represented by <head> and </head> tags. 
+
+A meta tag can have the following attributes in addition to core attributes:
+•	Name
+o	Name for the property. Can be anything. Examples include keywords, description, author, revised, generator etc.
+•	content
+o	Specifies the property's value.
+•	scheme
+o	Specifies a scheme to interpret the property's value (as declared in the content attribute).
+•	http-equiv
+o	Used for http response message headers. For example, HTTP-equiv can be used to refresh the page or to set a cookie. Values include content-type, expires, refresh and set-cookie.
+-->
+
+<!--
+Specifying Keywords and description
+You can use <meta> tag to specify important keywords related to the document and later these keywords are used by the search engines while indexing your webpage for searching purpose.
+-->
+
+<!--
+You can use <meta> tag to give a short description about the document. Again can be used by search engines while indexing your webpage for searching purpose.
+-->
+
+<!--
+Document Revision Date
+You can use <meta> tag to give information about when last time the document was updated. This information can be used by various web browsers while refreshing your webpage.
+-->
+
+<!--
+Document Refreshing
+Whilst the previous <meta> tags don't seem to do much visible, this <meta> tag has an action which can affect HCI. It can be used to specify a duration after which your web page will keep refreshing automatically. If you want your page to keep refreshing after every 5 seconds then use the following
+-->
+
+<html>
+   <head>
+      <title>Meta Tags Example</title>
+      <meta name = "keywords" content = "HTML, Meta Tags, Metadata" />
+      <meta name = "description" content = "Learning about Meta Tags." />
+      <meta name = "revised" content = "3/7/2022" />
+      <meta http-equiv = "refresh" content = "5" />
+   </head>
+   <body>
+      <p>Hello HCI!</p>
+   </body>
+</html>
+
