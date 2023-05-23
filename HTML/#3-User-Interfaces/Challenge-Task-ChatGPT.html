@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .section {
+      width: 600px;
+      height: 220px;
+      background-color: lightgray;
+      border: 2px solid gray;
+      text-align: center;
+      font-size: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 20px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <button id="btn1">Stopwatch</button>
+  <button id="btn2">Alarm Clock</button>
+  <button id="btn3">Timer</button>
+</div>
+<div class="container">
+  <div id="StopwatchB" class="section" style="display: none;">Stopwatch
+    <style>
+      #stopwatch {
+        font-size: 30px;
+        text-align: center;
+        margin-top: 50px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 20px;
+        margin: 20px;
+      }
+    </style>
+    <div id="stopwatch">
+      <p id="time">00:00:00.000</p>
+      <button id="startBtn">Start</button>
+      <button id="stopBtn">Stop</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+  </div>
+  <div id="Alarm ClockB" class="section" style="display: none;">
+    <style>
+      #alarmClock {
+        font-size: 30px;
+        text-align: center;
+        margin-top: 50px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 20px;
+        margin: 20px;
+      }
+    </style>
+    <div id="alarmClock">
+      <p id="time1">00:00:00</p>
+      <input type="text" id="inputTime">
+      <button id="setAlarmBtn">Set Alarm</button>
+      <button id="clearAlarmBtn">Clear Alarm</button>
+    </div>
+  </div>
+  <div id="TimerB" class="section" style="display: none;">
+    <style>
+      #countdown {
+        font-size: 30px;
+        text-align: center;
+        margin-top: 50px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 20px;
+        margin: 20px;
+      }
+    </style>
+    <div id="countdown">
+      <p id="time2">00:00:00</p>
+      <input type="text" id="inputTime2">
+      <button id="startBtn2">Start</button>
+      <button id="stopBtn2">Stop</button>
+      <button id="resetBtn2">Reset</button>
+    </div>
+  </div>
+</div>
+<script>
+  const btn1 = document.getElementById("btn1");
+  const btn2 = document.getElementById("btn2");
+  const btn3 = document.getElementById("btn3");
+  const StopwatchB = document.getElementById("StopwatchB");
+  const AlarmClockB = document.getElementById("Alarm ClockB");
+  const TimerB = document.getElementById("TimerB");
+
+  function showSection(section) {
+    StopwatchB.style.display = "none";
+    AlarmClockB.style.display = "none";
+    TimerB.style.display = "none";
+    section.style.display = "block";
+  }
+
+  btn1.addEventListener("click", () => {
+    showSection(StopwatchB);
+  });
+  btn2.addEventListener("click", () => {
+    showSection(AlarmClockB);
+  });
+  btn3.addEventListener("click", () => {
+    showSection(TimerB);
+  });
+</script>
+<script>
+  const stopwatch = document.getElementById("stopwatch");
+  const timeDisplay = document.getElementById("time");
+  const startBtn = document.getElementById("startBtn");
+  const stopBtn = document.getElementById("stopBtn");
+  const resetBtn = document.getElementById("resetBtn");
+
+  let interval;
+  let startTime;
+  let elapsedTime = 0;
+
+  function start() {
+    startTime = Date.now();
+    interval = setInterval(() => {
+      let now = Date.now();
+      elapsedTime = now - startTime;
+      let hours = Math.floor((elapsedTime % (1000 * 60 * 60 * 24)) /
+              (1000 * 60 * 60));
+      let minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) /
+              (1000 * 60));
+      let seconds = Math.floor((elapsedTime % (1000 * 60)) /
+              1000);
+      let milliseconds = elapsedTime % 1000;
+      timeDisplay.innerHTML =
+              (hours < 10 ? "0" + hours : hours) +
+              ":" +
+              (minutes < 10 ? "0" + minutes : minutes) +
+              ":" +
+              (seconds < 10 ? "0" + seconds : seconds) +
+              "." +
+              (milliseconds < 10 ? "00" + milliseconds : milliseconds < 100 ? "0" +
+                      milliseconds : milliseconds);
+    }, 10);
+    startBtn.setAttribute("disabled", "disabled");
+  }
+
+  function stop() {
+    clearInterval(interval);
+    startBtn.removeAttribute("disabled");
+  }
+
+  function reset() {
+    stop();
+    elapsedTime = 0;
+    timeDisplay.innerHTML = "00:00:00.000";
+  }
+
+  startBtn.addEventListener("click", start);
+  stopBtn.addEventListener("click", stop);
+  resetBtn.addEventListener("click", reset);
+</script>
+<script>
+  const alarmClock = document.getElementById("alarmClock");
+  const timeDisplay = document.getElementById("time1");
+  const inputTime = document.getElementById("inputTime");
+  const setAlarmBtn = document.getElementById("setAlarmBtn");
+  const clearAlarmBtn = document.getElementById("clearAlarmBtn");
+
+  let interval;
+  let alarmTime;
+
+  function startClock() {
+    interval = setInterval(() => {
+      let now = new Date();
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+      let seconds = now.getSeconds();
+      timeDisplay.innerHTML =
+              (hours < 10 ? "0" + hours : hours) +
+              ":" +
+              (minutes < 10 ? "0" + minutes : minutes) +
+              ":" +
+              (seconds < 10 ? "0" + seconds : seconds);
+      if (timeDisplay.innerHTML === alarmTime) {
+        alert("Wake up! Alarm is ringing.");
+      }
+    }, 1000);
+  }
+
+  function setAlarm() {
+    alarmTime = inputTime.value;
+    setAlarmBtn.setAttribute("disabled", "disabled");
+  }
+
+  function clearAlarm() {
+    clearInterval(interval);
+    setAlarmBtn.removeAttribute("disabled");
+    timeDisplay.innerHTML = "00:00:00";
+    inputTime.value = "";
+  }
+
+  setAlarmBtn.addEventListener("click", setAlarm);
+  clearAlarmBtn.addEventListener("click", clearAlarm);
+  startClock();
+</script>
+<script>
+  const countdown = document.getElementById("countdown");
+  const timeDisplay = document.getElementById("time2");
+  const inputTime = document.getElementById("inputTime2");
+  const startBtn = document.getElementById("startBtn2");
+  const stopBtn = document.getElementById("stopBtn2");
+  const resetBtn = document.getElementById("resetBtn2");
+
+  let interval;
+  let time;
+
+  function start() {
+    time = parseInt(inputTime.value) * 1000;
+    interval = setInterval(() => {
+      time -= 1000;
+      let minutes = Math.floor(time / 60 / 1000);
+      let seconds = Math.floor(time / 1000) % 60;
+      let hours = Math.floor(time / 3600 / 1000);
+      timeDisplay.innerHTML =
+              (hours < 10 ? "0" + hours : hours) +
+              ":" +
+              (minutes < 10 ? "0" + minutes : minutes) +
+              ":" +
+              (seconds < 10 ? "0" + seconds : seconds);
+      if (time <= 0) {
+        clearInterval(interval);
+        alert("Time's up!");
+      }
+    }, 1000);
+    startBtn.setAttribute("disabled", "disabled");
+  }
+
+  function stop() {
+    clearInterval(interval);
+    startBtn.removeAttribute("disabled");
+  }
+
+  function reset() {
+    stop();
+    timeDisplay.innerHTML = "00:00:00";
+    inputTime.value = "";
+  }
+
+  startBtn.addEventListener("click", start);
+  stopBtn.addEventListener("click", stop);
+  resetBtn.addEventListener("click", reset);
+</script>
+</body>
+</html>
+
+<!--
+The HTML code you provided contains a web page that includes three sections: Stopwatch, Alarm Clock, and Timer. The sections are displayed as gray boxes with buttons to switch between them. Here's a breakdown of each section:
+
+1. Stopwatch:
+- The stopwatch section is initially displayed when the page loads.
+- It includes a heading "Stopwatch" and a timer display that shows the elapsed time in the format "HH:MM:SS.MS".
+- There are three buttons: "Start," "Stop," and "Reset," which control the stopwatch functionality.
+
+2. Alarm Clock:
+- The alarm clock section is hidden initially and can be accessed by clicking the "Alarm Clock" button.
+- It includes a heading "Alarm Clock" and a current time display that shows the current time in the format "HH:MM:SS."
+- There is an input field to set the alarm time and two buttons: "Set Alarm" and "Clear Alarm."
+- When the current time matches the alarm time, an alert is displayed with the message "Wake up! Alarm is ringing."
+
+3. Timer:
+- The timer section is hidden initially and can be accessed by clicking the "Timer" button.
+- It includes a heading "Timer" and a countdown display that shows the remaining time in the format "HH:MM:SS."
+- There is an input field to set the timer duration in seconds and three buttons: "Start," "Stop," and "Reset."
+- When the timer reaches zero, an alert is displayed with the message "Time's up!"
+
+The JavaScript code included in the HTML file handles the functionality of each section, such as starting, stopping, and resetting the stopwatch, setting and clearing the alarm, and starting, stopping, and resetting the timer.
+
+To use the program, save the HTML code in a file with an HTML extension (e.g., `program.html`), and open the file in a web browser. You can then interact with the program by clicking the buttons to switch between sections and control the respective functionalities.
+-->
