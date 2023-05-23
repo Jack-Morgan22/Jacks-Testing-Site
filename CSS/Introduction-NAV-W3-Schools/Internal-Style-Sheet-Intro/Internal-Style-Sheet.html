@@ -1,0 +1,28 @@
+<!--
+Internal Style Sheet
+If you want to apply Style Sheet rules to a single document only, then you can include those rules in header section of the HTML document using <style> tag. Rules defined in internal style sheet overrides the rules defined in an external CSS file. Let's re-write above example once again, but here we will write style sheet rules in the same HTML document using <style> tag
+-->
+
+<!DOCTYPE html> 
+<html>
+   <head> 
+      <title>HTML Internal CSS</title> 
+      <style type = "text/css"> 
+         .red { 
+            color: red; 
+         } 
+         .thick{ 
+            font-size:20px; 
+         } 
+         .green { 
+            color:green; 
+         } 
+      </style> 
+   </head>
+   <body> 
+      <p class = "red">This is red</p>  
+      <p class = "thick">This is thick</p>  
+      <p class = "green">This is green</p>  
+      <p class = "thick green">This is thick and green</p> 
+   </body>
+</html>

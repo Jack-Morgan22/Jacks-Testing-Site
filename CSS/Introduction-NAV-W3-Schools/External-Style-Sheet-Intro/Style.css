@@ -1,0 +1,15 @@
+/*
+External Style Sheet
+If you need to use your style sheet for various pages, then its always recommended to define a common style sheet in a separate file. A cascading style sheet file will have extension as .css and it will be included in HTML files using <link> tag.
+Consider we define a style sheet file style.css which has following rules 
+*/
+
+.red {
+   color: red;
+}
+.thick {
+   font-size:20px;
+}
+.green {
+   color:green;
+}
