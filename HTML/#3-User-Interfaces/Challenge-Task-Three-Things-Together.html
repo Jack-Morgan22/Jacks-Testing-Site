@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .section {
+            width: 600px;
+            height: 220px;
+            background-color: lightgray;
+            border: 2px solid gray;
+            text-align: center;
+            font-size: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body onload=showSection(StopwatchB)>
+<div>
+    <button id="btn1">Stopwatch</button>
+    <button id="btn2">Alarm Clock</button>
+    <button id="btn3">Timer</button>
+</div>
+<div class="container">
+    <div id="StopwatchB" class="section">Stopwatch
+        <style>
+            #stopwatch {
+                font-size: 30px;
+                text-align: center;
+                margin-top: 50px;
+            }
+            button {
+                padding: 10px 20px;
+                font-size: 20px;
+                margin: 20px;
+            }
+        </style>
+        <body>
+        <div id="stopwatch">
+            <p id="time">00:00:00.000</p>
+            <button id="startBtn">Start</button>
+            <button id="stopBtn">Stop</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+        <script>
+            const stopwatch = document.getElementById("stopwatch");
+            const timeDisplay = document.getElementById("time");
+            const startBtn = document.getElementById("startBtn");
+            const stopBtn = document.getElementById("stopBtn");
+            const resetBtn = document.getElementById("resetBtn");
+
+            let interval;
+            let startTime;
+            let elapsedTime = 0;
+
+            function start() {
+                startTime = Date.now();
+                interval = setInterval(() => {
+                    let now = Date.now();
+                    elapsedTime = now - startTime;
+                    let hours = Math.floor((elapsedTime % (1000 * 60 * 60 * 24)) /
+                        (1000 * 60 * 60));
+                    let minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) /
+                        (1000 * 60));
+                    let seconds = Math.floor((elapsedTime % (1000 * 60)) /
+                        1000);
+                    let milliseconds = elapsedTime % 1000;
+                    timeDisplay.innerHTML =
+                        (hours < 10 ? "0" + hours : hours) +
+                        ":" +
+                        (minutes < 10 ? "0" + minutes : minutes) +
+                        ":" +
+                        (seconds < 10 ? "0" + seconds : seconds) +
+                        "." +
+                        (milliseconds < 10 ? "00" + milliseconds : milliseconds < 100 ? "0" +
+                            milliseconds : milliseconds);
+                }, 10);
+                startBtn.setAttribute("disabled", "disabled");
+            }
+
+            function stop() {
+                clearInterval(interval);
+                startBtn.removeAttribute("disabled");
+            }
+
+            function reset() {
+                stop();
+                elapsedTime = 0;
+                timeDisplay.innerHTML = "00:00:00.000";
+            }
+
+            startBtn.addEventListener("click", start);
+            stopBtn.addEventListener("click", stop);
+            resetBtn.addEventListener("click", reset);
+        </script>
+        </body>
+    </div>
+    <div id="Alarm ClockB" class="section">
+        <style>
+            #alarmClock {
+                font-size: 30px;
+                text-align: center;
+                margin-top: 50px;
+            }
+            button {
+                padding: 10px 20px;
+                font-size: 20px;
+                margin: 20px;
+            }
+        </style>
+        <body onload="startClock()">
+        <div id="alarmClock">
+            <p id="time1">00:00:00</p>
+            <input type="text" id="inputTime">
+            <button id="setAlarmBtn">Set Alarm</button>
+            <button id="clearAlarmBtn">Clear Alarm</button>
+        </div>
+        <script>
+            const alarmClock = document.getElementById("alarmClock");
+            const timeDisplay = document.getElementById("time");
+            const inputTime = document.getElementById("inputTime");
+            const setAlarmBtn = document.getElementById("setAlarmBtn");
+            const clearAlarmBtn = document.getElementById("clearAlarmBtn");
+
+            let interval;
+            let alarmTime;
+
+            function startClock() {
+                interval = setInterval(() => {
+                    let now = new Date();
+                    let hours = now.getHours();
+                    let minutes = now.getMinutes();
+                    let seconds = now.getSeconds();
+                    timeDisplay.innerHTML =
+                        (hours < 10 ? "0" + hours : hours) +
+                        ":" +
+                        (minutes < 10 ? "0" + minutes : minutes) +
+                        ":" +
+                        (seconds < 10 ? "0" + seconds : seconds);
+                    if (timeDisplay.innerHTML === alarmTime) {
+                        alert("Wake up! Alarm is ringing.");
+                    }
+                }, 1000);
+            }
+
+            function setAlarm() {
+                alarmTime = inputTime.value;
+                setAlarmBtn.setAttribute("disabled", "disabled");
+            }
+
+            function clearAlarm() {
+                clearInterval(interval);
+                setAlarmBtn.removeAttribute("disabled");
+                timeDisplay.innerHTML = "00:00:00";
+                inputTime.value = "";
+            }
+
+            setAlarmBtn.addEventListener("click", setAlarm);
+            clearAlarmBtn.addEventListener("click", clearAlarm);
+        </script>
+        </body>
+    </div>
+    <div id="TimerB" class="section">
+        <style>
+            #countdown {
+                font-size: 30px;
+                text-align: center;
+                margin-top: 50px;
+            }
+            button {
+                padding: 10px 20px;
+                font-size: 20px;
+                margin: 20px;
+            }
+        </style>
+        <body>
+        <div id="countdown">
+            <p id="time2">00:00:00</p>
+            <input type="text" id="inputTime2">
+            <button id="startBtn2">Start</button>
+            <button id="stopBtn2">Stop</button>
+            <button id="resetBtn2">Reset</button>
+        </div>
+        <script>
+            const countdown = document.getElementById("countdown");
+            const timeDisplay = document.getElementById("time");
+            const inputTime = document.getElementById("inputTime");
+            const startBtn = document.getElementById("startBtn");
+            const stopBtn = document.getElementById("stopBtn");
+            const resetBtn = document.getElementById("resetBtn");
+
+            let interval;
+            let time;
+
+            function start() {
+                time = parseInt(inputTime.value) * 1000;
+                interval = setInterval(() => {
+                    time -= 1000;
+                    let minutes = Math.floor(time / 60 / 1000);
+                    let seconds = Math.floor(time / 1000) % 60;
+                    let hours = Math.floor(time / 3600 / 1000);
+                    timeDisplay.innerHTML =
+                        (hours < 10 ? "0" + hours : hours) +
+                        ":" +
+                        (minutes < 10 ? "0" + minutes : minutes) +
+                        ":" +
+                        (seconds < 10 ? "0" + seconds : seconds);
+                    if (time <= 0) {
+                        clearInterval(interval);
+                        alert("Time's up!");
+                    }
+                }, 1000);
+                startBtn.setAttribute("disabled", "disabled");
+            }
+
+            function stop() {
+                clearInterval(interval);
+                startBtn.removeAttribute("disabled");
+            }
+
+            function reset() {
+                stop();
+                timeDisplay.innerHTML = "00:00:00";
+                inputTime.value = "";
+            }
+
+            startBtn.addEventListener("click", start);
+            stopBtn.addEventListener("click", stop);
+            resetBtn.addEventListener("click", reset);
+        </script>
+        </body>
+    </div>
+</div>
+<script>
+    const btn1 = document.getElementById("btn1");
+    const btn2 = document.getElementById("btn2");
+    const btn3 = document.getElementById("btn3");
+    const StopwatchB = document.getElementById("StopwatchB");
+    const AlarmClockB = document.getElementById("Alarm ClockB");
+    const TimerB = document.getElementById("TimerB");
+
+    function showSection(section) {
+        StopwatchB.style.display = "none";
+        AlarmClockB.style.display = "none";
+        TimerB.style.display = "none";
+        section.style.display = "block";
+    }
+
+    btn1.addEventListener("click", () => {
+        showSection(StopwatchB);
+    });
+    btn2.addEventListener("click", () => {
+        showSection(AlarmClockB);
+    });
+    btn3.addEventListener("click", () => {
+        showSection(TimerB);
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
