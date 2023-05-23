@@ -1,0 +1,99 @@
+<!--
+Stopwatch
+HTML:
+•	The first part of the code defines the structure of the stopwatch app using HTML (HyperText Markup Language).
+•	The <head> section contains the styles for the stopwatch using CSS (Cascading Style Sheets).
+•	The <body> section contains the actual stopwatch, which is displayed in the browser window.
+•	The stopwatch consists of a time display element (<p id="time">00:00:00</p>), and three buttons (<button>) with the id's "startBtn", "stopBtn", and "resetBtn".
+
+CSS:
+•	The styles in the <head> section define the look of the stopwatch.
+•	The #stopwatch selector sets the font size and text alignment for the stopwatch.
+•	The button selector sets the padding, font size, and margin for the buttons.
+
+JavaScript:
+•	The last part of the code contains the JavaScript (JS) code that makes the stopwatch work.
+•	First, the code selects the elements from the HTML using document.getElementById and assigns them to variables (e.g., const timeDisplay = document.getElementById("time");).
+•	The start function uses setInterval to increment the time variable by one every second (1000 milliseconds). The time variable is used to calculate the elapsed hours, minutes, and seconds, which are displayed in the timeDisplay element.
+•	The stop function uses clearInterval to stop the timer.
+•	The reset function stops the timer and resets the time variable back to 0, and also resets the time display back to "00:00:00".
+•	Finally, the code adds event listeners to the buttons using addEventListener, which trigger the start, stop, and reset functions when the buttons are clicked.
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #stopwatch {
+        font-size: 30px;
+        text-align: center;
+        margin-top: 50px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 20px;
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stopwatch">
+      <p id="time">00:00:00.000</p>
+      <button id="startBtn">Start</button>
+      <button id="stopBtn">Stop</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+    <script>
+      const stopwatch = document.getElementById("stopwatch");
+      const timeDisplay = document.getElementById("time");
+      const startBtn = document.getElementById("startBtn");
+      const stopBtn = document.getElementById("stopBtn");
+      const resetBtn = document.getElementById("resetBtn");
+
+      let interval;
+      let startTime;
+      let elapsedTime = 0;
+
+      function start() {
+        startTime = Date.now();
+        interval = setInterval(() => {
+          let now = Date.now();
+          elapsedTime = now - startTime;
+          let hours = Math.floor((elapsedTime % (1000 * 60 * 60 * 24)) /
+            (1000 * 60 * 60));
+          let minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) /
+            (1000 * 60));
+          let seconds = Math.floor((elapsedTime % (1000 * 60)) /
+            1000);
+          let milliseconds = elapsedTime % 1000;
+          timeDisplay.innerHTML =
+            (hours < 10 ? "0" + hours : hours) +
+            ":" +
+            (minutes < 10 ? "0" + minutes : minutes) +
+            ":" +
+            (seconds < 10 ? "0" + seconds : seconds) +
+            "." +
+            (milliseconds < 10 ? "00" + milliseconds : milliseconds < 100 ? "0" +
+            milliseconds : milliseconds);
+        }, 10);
+        startBtn.setAttribute("disabled", "disabled");
+      }
+
+      function stop() {
+        clearInterval(interval);
+        startBtn.removeAttribute("disabled");
+      }
+
+      function reset() {
+        stop();
+        elapsedTime = 0;
+        timeDisplay.innerHTML = "00:00:00.000";
+      }
+
+      startBtn.addEventListener("click", start);
+      stopBtn.addEventListener("click", stop);
+      resetBtn.addEventListener("click", reset);
+    </script>
+  </body>
+</html>
+

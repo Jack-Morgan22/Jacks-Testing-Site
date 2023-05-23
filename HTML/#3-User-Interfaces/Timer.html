@@ -1,0 +1,95 @@
+<!--
+Timer
+HTML:
+•	The first part of the code defines the structure of the countdown timer app using HTML (HyperText Markup Language).
+•	The <head> section contains the styles for the countdown timer using CSS (Cascading Style Sheets).
+•	The <body> section contains the actual countdown timer, which is displayed in the browser window.
+•	The countdown timer consists of a time display element (<p id="time">00:00:00</p>), an input field (<input type="text" id="inputTime">) for entering the time in seconds, and three buttons (<button>) with the id's "startBtn", "stopBtn", and "resetBtn".
+
+CSS:
+•	The styles in the <head> section define the look of the countdown timer.
+•	The #countdown selector sets the font size and text alignment for the countdown timer.
+•	The button selector sets the padding, font size, and margin for the buttons.
+
+JavaScript:
+•	The last part of the code contains the JavaScript (JS) code that makes the countdown timer work.
+•	First, the code selects the elements from the HTML using document.getElementById and assigns them to variables (e.g., const timeDisplay = document.getElementById("time");).
+•	The start function uses parseInt to convert the input time from a string to an integer in seconds, then converts the input time to milliseconds. The function then uses setInterval to decrement the time variable by 1000 milliseconds (1 second) every second. The time variable is used to calculate the remaining hours, minutes, and seconds, which are displayed in the timeDisplay element. If the time reaches 0, the interval is cleared using clearInterval, and an alert is displayed saying "Time's up!".
+•	The stop function uses clearInterval to stop the timer.
+•	The reset function stops the timer, resets the time display back to "00:00:00", and clears the input field.
+•	Finally, the code adds event listeners to the buttons using addEventListener, which trigger the start, stop, and reset functions when the buttons are clicked.
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #countdown {
+        font-size: 30px;
+        text-align: center;
+        margin-top: 50px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 20px;
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="countdown">
+      <p id="time">00:00:00</p>
+      <input type="text" id="inputTime">
+      <button id="startBtn">Start</button>
+      <button id="stopBtn">Stop</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+    <script>
+      const countdown = document.getElementById("countdown");
+      const timeDisplay = document.getElementById("time");
+      const inputTime = document.getElementById("inputTime");
+      const startBtn = document.getElementById("startBtn");
+      const stopBtn = document.getElementById("stopBtn");
+      const resetBtn = document.getElementById("resetBtn");
+
+      let interval;
+      let time;
+
+      function start() {
+        time = parseInt(inputTime.value) * 1000;
+        interval = setInterval(() => {
+          time -= 1000;
+          let minutes = Math.floor(time / 60 / 1000);
+          let seconds = Math.floor(time / 1000) % 60;
+          let hours = Math.floor(time / 3600 / 1000);
+          timeDisplay.innerHTML =
+            (hours < 10 ? "0" + hours : hours) +
+            ":" +
+            (minutes < 10 ? "0" + minutes : minutes) +
+            ":" +
+            (seconds < 10 ? "0" + seconds : seconds);
+          if (time <= 0) {
+            clearInterval(interval);
+            alert("Time's up!");
+          }
+        }, 1000);
+        startBtn.setAttribute("disabled", "disabled");
+      }
+
+      function stop() {
+        clearInterval(interval);
+        startBtn.removeAttribute("disabled");
+      }
+
+      function reset() {
+        stop();
+        timeDisplay.innerHTML = "00:00:00";
+        inputTime.value = "";
+      }
+
+      startBtn.addEventListener("click", start);
+      stopBtn.addEventListener("click", stop);
+      resetBtn.addEventListener("click", reset);
+    </script>
+  </body>
+</html>

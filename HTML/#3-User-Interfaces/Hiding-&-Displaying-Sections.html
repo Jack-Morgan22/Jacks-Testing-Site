@@ -1,0 +1,84 @@
+<!--
+Hiding and displaying sections
+HTML:
+•	The first part of the code defines the structure of the example using HTML (HyperText Markup Language).
+•	The <head> section contains the styles for the example using CSS (Cascading Style Sheets).
+•	The <body> section contains the actual example, which is displayed in the browser window. The onload attribute is added to the <body> element, which triggers the showSection function and passes the section1 argument when the page loads.
+•	The example consists of 3 buttons (<button id="btn1">, <button id="btn2">, and <button id="btn3">) and a container DIV (<div class="container">) that contains 3 sections (<div id="section1" class="section">, <div id="section2" class="section">, and <div id="section3" class="section">).
+
+CSS:
+•	The styles in the <head> section define the look of the example.
+•	The .container selector sets the display, justification, alignment, and height of the container DIV.
+•	The .section selector sets the width, height, background color, border, text alignment, and font size of the sections.
+•	The button selector sets the padding, margin, and font size of the buttons.
+
+JavaScript:
+•	The last part of the code contains the JavaScript (JS) code that makes the example work.
+•	First, the code selects the elements from the HTML using document.getElementById and assigns them to variables (e.g., const btn1 = document.getElementById("btn1");).
+•	The showSection function sets the display property of all sections to none and then sets the display property of the selected section to block.
+•	Finally, the code adds event listeners to the buttons using addEventListener, which trigger the showSection function and pass the selected section as an argument when the buttons are clicked.
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .section {
+        width: 200px;
+        height: 200px;
+        background-color: lightgray;
+        border: 2px solid gray;
+        text-align: center;
+        font-size: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 20px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body onload=showSection(section1)>
+    <div>
+      <button id="btn1">Show Section 1</button>
+      <button id="btn2">Show Section 2</button>
+      <button id="btn3">Show Section 3</button>
+    </div>
+    <div class="container">
+      <div id="section1" class="section">Section 1</div>
+      <div id="section2" class="section">Section 2</div>
+      <div id="section3" class="section">Section 3</div>
+    </div>
+    <script>
+      const btn1 = document.getElementById("btn1");
+      const btn2 = document.getElementById("btn2");
+      const btn3 = document.getElementById("btn3");
+      const section1 = document.getElementById("section1");
+      const section2 = document.getElementById("section2");
+      const section3 = document.getElementById("section3");
+
+      function showSection(section) {
+        section1.style.display = "none";
+        section2.style.display = "none";
+        section3.style.display = "none";
+        section.style.display = "block";
+      }
+
+      btn1.addEventListener("click", () => {
+        showSection(section1);
+      });
+      btn2.addEventListener("click", () => {
+        showSection(section2);
+      });
+      btn3.addEventListener("click", () => {
+        showSection(section3);
+      });
+    </script>
+  </body>
+</html>
