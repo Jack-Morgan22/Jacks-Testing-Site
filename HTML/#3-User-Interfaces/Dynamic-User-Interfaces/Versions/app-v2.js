@@ -2,8 +2,6 @@
 const form = document.querySelector('form');
 const input = document.querySelector('#new-item');
 const itemsList = document.querySelector('#items');
-const sortBtn = document.querySelector('#sort-btn');
-sortBtn.addEventListener('click', sortItems);
 
 // Load items from local storage, or create an empty array
 // if there are none
@@ -50,17 +48,6 @@ function deleteItem(e) {
         localStorage.setItem('items', JSON.stringify(items));
         displayItems();
     }
-}
-
-function sortItems() {
-    // Sort the items array by priority, using a custom sort function
-    items.sort((a, b) => {
-        const priorityA = a.split(':')[1];
-        const priorityB = b.split(':')[1];
-        return priorityA - priorityB;
-    });
-    // Update the display with the sorted items
-    displayItems();
 }
 
 // Add event listeners to the form and list elements
